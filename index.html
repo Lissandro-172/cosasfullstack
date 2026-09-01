@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículum · Jose Lissandro</title>
+  <style>
+    /* ——— RESET & BASE ——— */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f5;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    /* ——— TARJETA PRINCIPAL ——— */
+    .cv-card {
+      max-width: 900px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      padding: 2rem 2rem 2.2rem;
+      transition: all 0.2s ease;
+    }
+
+    /* ——— HEADER: imagen a la derecha ——— */
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      flex: 1 1 200px;
+    }
+
+    .header-left h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #1a2639;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 0.2rem;
+    }
+
+    .header-left .titulo {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #4a5b6e;
+      background: #f0f4fa;
+      display: inline-block;
+      padding: 0.2rem 1.2rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      margin-top: 4px;
+    }
+
+    /* Imagen en esquina superior derecha */
+    .foto-perfil {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      background: #d9e2ec;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #2c3e50;
+      border: 3px solid white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%236b7f93"><circle cx="50" cy="40" r="24"/><circle cx="50" cy="90" r="40"/></svg>');
+      background-size: 70%;
+      background-position: center 60%;
+      background-repeat: no-repeat;
+      background-color: #e6edf5;
+    }
+
+    /* si quieres poner una imagen real, descomenta y cambia la ruta */
+    
+    .foto-perfil {
+      background-image: url('1.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    
+
+    /* ——— CUERPO: info en columnas ——— */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem 2.2rem;
+      margin-top: 0.8rem;
+    }
+
+    /* ——— COLUMNA IZQUIERDA (contacto, educación, habilidades) ——— */
+    .col-izq {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .bloque h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a2639;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid #e2e9f0;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: #2c3e50;
+    }
+
+    /* Contacto (teléfono, email) */
+    .contacto-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.8rem;
+      color: #1f2a3a;
+      font-size: 0.95rem;
+    }
+
+    .contacto-item .emoji {
+      font-size: 1.2rem;
+      width: 1.8rem;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .contacto-item a {
+      color: #1a2639;
+      text-decoration: none;
+      border-bottom: 1px dotted transparent;
+      transition: border 0.2s;
+    }
+
+    .contacto-item a:hover {
+      border-bottom: 1px dotted #4a6b8a;
+    }
+
+    /* Educación */
+    .educacion-item {
+      margin-bottom: 1rem;
+    }
+
+    .educacion-item .grado {
+      font-weight: 600;
+      color: #0d1b2a;
+      font-size: 1rem;
+    }
+
+    .educacion-item .institucion {
+      font-weight: 400;
+      color: #2e4057;
+      font-size: 0.95rem;
+      display: block;
+    }
+
+    .educacion-item .anno {
+      font-size: 0.8rem;
+      color: #5e6f82;
+      background: #ecf1f7;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+
+    /* Habilidades */
+    .habilidades-lista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.6rem;
+      margin-top: 0.2rem;
+    }
+
+    .habilidad-tag {
+      background: #eaf0f8;
+      color: #1f334a;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    /* ——— COLUMNA DERECHA (experiencia) ——— */
+    .col-der {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .experiencia-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .experiencia-item .cargo {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #0b1a2b;
+    }
+
+    .experiencia-item .empresa {
+      font-weight: 500;
+      color: #2b4057;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    .experiencia-item .periodo {
+      font-size: 0.75rem;
+      background: #eef3f9;
+      padding: 0.1rem 0.8rem;
+      border-radius: 30px;
+      color: #3b526b;
+      display: inline-block;
+    }
+
+    .experiencia-item .descripcion {
+      font-size: 0.93rem;
+      color: #1f2d3e;
+      margin-top: 0.4rem;
+      line-height: 1.5;
+      padding-left: 0.2rem;
+    }
+
+    .experiencia-item .descripcion ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .experiencia-item .descripcion li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .experiencia-item .descripcion li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #3c6e9c;
+      font-weight: 400;
+    }
+
+    /* ——— RESPONSIVE ——— */
+    @media (max-width: 700px) {
+      .cv-body {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .cv-header {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .foto-perfil {
+        width: 90px;
+        height: 90px;
+      }
+
+      .header-left h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .cv-card {
+        padding: 1.5rem;
+      }
+
+      .header-left h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* pequeños detalles */
+    hr {
+      border: none;
+      border-top: 1px solid #e7ecf3;
+      margin: 0.8rem 0 1.2rem;
+    }
+
+    .texto-ficticio {
+      font-size: 0.8rem;
+      color: #7c8b9e;
+      opacity: 0.7;
+      text-align: right;
+      margin-top: 0.6rem;
+      border-top: 1px dashed #dfe6ef;
+      padding-top: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-card">
+
+    <!-- ENCABEZADO: nombre + imagen derecha -->
+    <div class="cv-header">
+      <div class="header-left">
+        <h1>Jose Lissandro</h1>
+        <span class="titulo">Ingeniero de Software · Full Stack</span>
+      </div>
+      <div class="foto-perfil" role="img" aria-label="Foto de perfil"></div>
+    </div>
+
+    <!-- CUERPO PRINCIPAL -->
+    <div class="cv-body">
+
+      <!-- COLUMNA IZQUIERDA: contacto, educación, habilidades -->
+      <div class="col-izq">
+
+        <!-- Contacto -->
+        <div class="bloque">
+          <h3>📌 Contacto</h3>
+          <div class="contacto-item">
+            <span class="emoji">📞</span>
+            <span>+52 55 1234 5678</span>
+          </div>
+          <div class="contacto-item">
+            <span class="emoji">✉️</span>
+            <a href="mailto:jose.lissandro@email.dev">jose.lissandro@email.dev</a>
+          </div>
+          <div class="contacto-item">
+            <span class="emoji">🌐</span>
+            <span>linkedin.com/in/jlissandro</span>
+          </div>
+          <div class="contacto-item">
+            <span class="emoji">📍</span>
+            <span>Ciudad de México, MX</span>
+          </div>
+        </div>
+
+        <!-- Educación -->
+        <div class="bloque">
+          <h3>🎓 Educación</h3>
+          <div class="educacion-item">
+            <div class="grado">Ing. en Sistemas Computacionales</div>
+            <span class="institucion">Tecnológico de Monterrey</span>
+            <span class="anno">2018 – 2022</span>
+          </div>
+          <div class="educacion-item">
+            <div class="grado">Diplomado en Arquitectura Cloud</div>
+            <span class="institucion">Google Cloud Skills</span>
+            <span class="anno">2023</span>
+          </div>
+        </div>
+
+        <!-- Habilidades -->
+        <div class="bloque">
+          <h3>⚙️ Habilidades</h3>
+          <div class="habilidades-lista">
+            <span class="habilidad-tag">JavaScript / TS</span>
+            <span class="habilidad-tag">React</span>
+            <span class="habilidad-tag">Node.js</span>
+            <span class="habilidad-tag">Python</span>
+            <span class="habilidad-tag">Docker</span>
+            <span class="habilidad-tag">AWS</span>
+            <span class="habilidad-tag">PostgreSQL</span>
+            <span class="habilidad-tag">MongoDB</span>
+            <span class="habilidad-tag">Git / GitHub</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLUMNA DERECHA: Experiencia -->
+      <div class="col-der">
+
+        <div class="bloque">
+          <h3>💼 Experiencia</h3>
+
+          <div class="experiencia-item">
+            <div class="cargo">Desarrollador Full Stack</div>
+            <div class="empresa">Innovatech Solutions</div>
+            <span class="periodo">2023 – actual</span>
+            <div class="descripcion">
+              <ul>
+                <li>Lideré el desarrollo de un dashboard analítico con React y D3, reduciendo tiempo de reportes en 40%.</li>
+                <li>Implementé API REST con Node.js + Express, integración con PostgreSQL y autenticación JWT.</li>
+                <li>Migración de infraestructura a Docker y orquestación con AWS ECS.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experiencia-item" style="margin-top: 1.6rem;">
+            <div class="cargo">Ingeniero de Software Jr.</div>
+            <div class="empresa">DataCore Labs</div>
+            <span class="periodo">2022 – 2023</span>
+            <div class="descripcion">
+              <ul>
+                <li>Mantenimiento y mejora de plataforma de análisis de datos (Python + Flask).</li>
+                <li>Colaboré en el diseño de bases de datos no relacionales (MongoDB) y optimización de consultas.</li>
+                <li>Desarrollo de componentes reutilizables en Vue.js para el frontend interno.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experiencia-item" style="margin-top: 1.6rem;">
+            <div class="cargo">Asistente de desarrollo (prácticas)</div>
+            <div class="empresa">Nexus Digital</div>
+            <span class="periodo">2021 – 2022</span>
+            <div class="descripcion">
+              <ul>
+                <li>Soporte en la creación de microservicios con Spring Boot y despliegue en contenedores.</li>
+                <li>Automatización de scripts de pruebas con Selenium y pytest.</li>
+                <li>Participación en migración de sistemas legacy a arquitectura basada en eventos.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div> <!-- fin bloque experiencia -->
+
+        <!-- minibloque extra (opcional) -->
+        <div style="margin-top: -0.2rem; font-size: 0.9rem; color: #3e546b; background: #f6faff; padding: 0.8rem 1.2rem; border-radius: 16px; border: 1px solid #e3ebf5;">
+          <span style="font-weight: 500;">✨ Plus:</span> Inglés profesional (C1) · Certificación Scrum Master · Contribuciones open source.
+        </div>
+
+      </div> <!-- fin col-der -->
+    </div> <!-- fin cv-body -->
+
+    <!-- pequeño pie (ficticio) -->
+    <div class="texto-ficticio">
+      ⚡ información ficticia · currículum de Jose Lissandro
+    </div>
+
+  </div> <!-- fin cv-card -->
+</body>
+</html>
